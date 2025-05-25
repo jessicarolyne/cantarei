@@ -15,6 +15,11 @@ class PessoaServices extends Services {
     const listarSalmos = await pessoa.getSalmoCantado();
     return listarSalmos;
   }
+
+  async buscarPessoasEscopo() {
+    const listaPessoas = await super.buscarPorEscopo('todosOsRegistros');
+    return listaPessoas;
+  }
 }
 
 module.exports = PessoaServices;

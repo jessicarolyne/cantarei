@@ -14,8 +14,7 @@ class SalmoController extends Controller {
             const listaPessoas = await salmoServices.buscarPessoasPorSalmo(Number(salmoId));
             return res.status(200).json(listaPessoas);
         } catch (error) {
-            console.error('Erro ao listar registros:', error);
-            return res.status(500).json({ erro: 'Erro interno no servidor' });
+            return res.status(500).json({ erro: `Erro interno no servidor: ${error.message}` });
         }
     }
 }

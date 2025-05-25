@@ -25,8 +25,16 @@ class PessoaController extends Controller {
             const listaSalmos = await pessoaServices.buscarSalmosPorPessoa(Number(pessoaId));
             return res.status(200).json(listaSalmos);
         } catch (error) {
-            console.error('Erro ao listar registros:', error);
-            return res.status(500).json({ erro: 'Erro interno no servidor' });
+            return res.status(500).json({ erro: `Erro interno no servidor: ${error.message}` });
+        }
+    }
+
+    async buscarTodasAsPessoas(req, res) {
+        try {
+            const listaTodasAsPessoas = await pessoaServices.buscarPessoasEscopo();
+            return res.status(200).json(listaTodasAsPessoas);
+        } catch (error) {
+            return res.status(500).json({ erro: `Erro interno no servidor: ${error.message}` });
         }
     }
 }
