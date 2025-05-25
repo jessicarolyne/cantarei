@@ -11,10 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Pessoa.belongsTo(models.Grupo, {
-        foreignKey: 'grupo_id'
+        foreignKey: 'grupo_id',
       });
       Pessoa.hasMany(models.Salmo, {
-        foreignKey: 'pessoa_id'
+        foreignKey: 'pessoa_id',
+        as: 'salmoCantado'
       });
     }
   }

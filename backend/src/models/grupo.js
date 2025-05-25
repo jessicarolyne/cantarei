@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Grupo.hasMany(models.Pessoa, {
-        foreignKey: 'grupo_id'
+        foreignKey: 'grupo_id',
+        as: 'membroGrupo'
       });
     }
   }
