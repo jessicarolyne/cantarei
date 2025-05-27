@@ -9,7 +9,7 @@ class PessoaController extends Controller {
     }
 
     async buscarGrupos(req, res) {
-        const { pessoaId } = req.params;
+        const { pessoa_id } = req.params;
         try {
             const listaGrupos = await pessoaServices.buscarGruposPorPessoa(Number(id));
             return res.status(200).json(listaGrupos);
@@ -20,9 +20,9 @@ class PessoaController extends Controller {
     }
 
     async buscarSalmos(req, res) {
-        const { pessoaId } = req.params;
+        const { pessoa_id } = req.params;
         try {
-            const listaSalmos = await pessoaServices.buscarSalmosPorPessoa(Number(pessoaId));
+            const listaSalmos = await pessoaServices.buscarSalmosPorPessoa(Number(pessoa_id));
             return res.status(200).json(listaSalmos);
         } catch (error) {
             return res.status(500).json({ erro: `Erro interno no servidor: ${error.message}` });

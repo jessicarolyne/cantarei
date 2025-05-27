@@ -21,7 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Pessoa.init({
-    nome: DataTypes.STRING
+    nome: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [3, 256],
+          msg: "O campo nome deve ter no minimo 3 caracteres."
+        } 
+      }
+    }
   }, {
     sequelize,
     modelName: 'Pessoa',

@@ -8,9 +8,9 @@ class GrupoController extends Controller {
         super(grupoServices);
     }
     async buscarMembros(req, res) {
-        const { grupoId } = req.params;
+        const { grupo_id } = req.params;
         try {
-            const listaMembros = await grupoServices.buscarPessoasPorGrupo(Number(grupoId));
+            const listaMembros = await grupoServices.buscarPessoasPorGrupo(Number(grupo_id));
             return res.status(200).json(listaMembros);
         } catch (error) {
             return res.status(500).json({ erro: `Erro interno no servidor: ${error.message}` });

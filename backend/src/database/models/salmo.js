@@ -21,7 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     video_url: DataTypes.STRING,
     cifra: DataTypes.STRING,
     tempo_liturgico: DataTypes.STRING,
-    data: DataTypes.DATEONLY
+    data: {
+      type: DataTypes.DATEONLY,
+      validate: {
+        isDate: {
+          args: true,
+          msg: 'Formato de data invalido. O formato correto deve ser YYYY-MM-DD',
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Salmo',

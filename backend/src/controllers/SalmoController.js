@@ -9,9 +9,9 @@ class SalmoController extends Controller {
     }
 
      async buscarPessoas(req, res) {
-        const { salmoId } = req.params;
+        const { salmo_id } = req.params;
         try {
-            const listaPessoas = await salmoServices.buscarPessoasPorSalmo(Number(salmoId));
+            const listaPessoas = await salmoServices.buscarPessoasPorSalmo(Number(salmo_id));
             return res.status(200).json(listaPessoas);
         } catch (error) {
             return res.status(500).json({ erro: `Erro interno no servidor: ${error.message}` });
