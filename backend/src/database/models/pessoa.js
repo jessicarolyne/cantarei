@@ -5,18 +5,12 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Pessoa extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Pessoa.belongsTo(models.Grupo, {
-        foreignKey: 'grupo_id',
-      });
-      Pessoa.hasMany(models.Salmo, {
+      Pessoa.belongsToMany(models.Grupo, {
+        through: 'pessoas_grupos',
+        as: 'grupos',
         foreignKey: 'pessoa_id',
-        as: 'salmoCantado'
+        otherKey: 'grupo_id',
       });
     }
   }
@@ -27,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [3, 256],
           msg: "O campo nome deve ter no minimo 3 caracteres."
-        } 
+        }
       }
     }
   }, {

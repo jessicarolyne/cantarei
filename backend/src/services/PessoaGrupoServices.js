@@ -1,9 +1,9 @@
 const Services = require('./Services.js');
-const dataSource = require('../database/models');
+const { Pessoa, Grupo } = require('../database/models');
 
 class PessoaServices extends Services {
   constructor() {
-    super('Pessoa');
+    super('PessoaGrupo');
   }
   async buscarGruposPorPessoa(id) {
     const pessoa = await super.buscarRegistroPorId(id);
@@ -23,8 +23,8 @@ class PessoaServices extends Services {
   }
 
   async vincularGrupoPessoa(pessoa_id, grupo_id) {
-    const pessoa = await super.buscarRegistroPorId(pessoa_id);
-    const grupo = await super.Grupo.buscarRegistroPorId(grupo_id);
+    const pessoa = await Pessoa.findByPk(pessoa_id);
+    const grupo = await Grupo.findByPk(grupo_id);
 
     if(!pessoa || !grupo) {
       throw new Error('Pessoa ou grupo não encontrado.');

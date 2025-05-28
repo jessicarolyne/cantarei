@@ -5,7 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('tempos_liturgicos', [{
        nome: 'Tempo Comum',
-       cor: 'Verder',
+       cor: 'Verde',
        descricao: null
      }], {});
   },

@@ -1,8 +1,10 @@
 'use strict';
+const { sequelize } = require('../models');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('salmo_pessoa', {
+    await queryInterface.createTable('pessoas_grupos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,14 +12,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       pessoa_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: { model: 'pessoas', key: 'id' }
       },
-      salmo_id: {
-        allowNull: false,
+      grupo_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
-        references: { model: 'salmos', key: 'id' }
+        references: { model: 'grupos', key: 'id' }
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('salmo_pessoa');
+    await queryInterface.dropTable('pessoas_grupos');
   }
 };

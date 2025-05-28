@@ -10,7 +10,6 @@ module.exports = {
         cifra: "C G Am",
         tempo_liturgico: '6º Domingo da Páscoa - Ano C',
         data: '2025-05-25',
-        pessoa_id: 3,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

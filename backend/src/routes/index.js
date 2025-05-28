@@ -2,6 +2,7 @@ const express = require('express');
 const grupos = require('./gruposRoute.js');
 const pessoas = require('./pessoasRoute.js');
 const salmos = require('./salmosRoute.js');
+const pessoasGrupos = require('./pessoaGrupoRoute.js');
 
 module.exports = app => {
   console.log('servidor escutando pq!');
@@ -13,6 +14,7 @@ module.exports = app => {
     express.json(),
     grupos,
     pessoas,
-    salmos
+    salmos,
+    pessoasGrupos,
   );
 };

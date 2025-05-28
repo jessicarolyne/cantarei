@@ -1,0 +1,17 @@
+'use strict';
+
+const { sequelize } = require('../models');
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.addColumn('pessoas', 'grupo_id', {
+      allowNull: true,
+      type: Sequelize.INTEGER,
+      references: { model: 'grupos', key: 'id' }
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.removeColumn('pessoas', 'grupo_id');
+  }
+};

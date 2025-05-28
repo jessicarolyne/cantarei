@@ -4,15 +4,14 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Salmo extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Salmo.belongsTo(models.Pessoa, {
-        foreignKey: 'pessoa_id',
-        as: 'salmoCantado'
+      Salmo.hasMany(models.SalmoPessoa, {
+        foreignKey: 'salmo_id',
+        as: 'salmoPessoa'
+      });
+       Salmo.hasMany(models.CelebracaoSalmo, {
+        foreignKey: 'salmo_id',
+        as: 'salmoCelebracao'
       });
     }
   }
@@ -20,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     titulo: DataTypes.STRING,
     video_url: DataTypes.STRING,
     cifra: DataTypes.STRING,
-    tempo_liturgico: DataTypes.STRING,
+    ano_liturgico: DataTypes.STRING,
     data: {
       type: DataTypes.DATEONLY,
       validate: {
@@ -29,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Formato de data invalido. O formato correto deve ser YYYY-MM-DD',
         }
       }
-    }
+    },
+    observacoes: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Salmo',

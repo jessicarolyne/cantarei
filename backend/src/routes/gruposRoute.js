@@ -12,7 +12,7 @@ router.get('/grupos/:id', (req, res) => grupoController.buscarPorId(req, res));
 router.post('/grupos', (req, res) => grupoController.criarNovoRegistro(req, res));
 router.put('/grupos/:id', (req, res) => grupoController.atualizarRegistro(req, res));
 router.delete('grupos/:id', (req, res) => grupoController.excluirRegistro(req, res));
-router.get('/grupos/:grupo_id/pessoas', (req, res) => grupoController.buscarMembros(req, res));
-router.post('/grupos/:grupo_id/pessoas', (req, res) => pessoaController.criarNovoRegistro(req, res));
+// router.get('/grupos/:grupo_id/pessoas', (req, res) => grupoController.buscarMembros(req, res));
+// router.post('/grupos/:grupo_id/pessoas', (req, res) => pessoaController.criarNovoRegistro(req, res));
 
 module.exports = router;
