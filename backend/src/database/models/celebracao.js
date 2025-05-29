@@ -9,6 +9,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'tempo_liturgico_id',
         // as: 'CelebracaoPessoa'
       });
+      Celebracao.belongsTo(models.Salmo, {
+        foreignKey: 'salmo_id',
+        // as: 'CelebracaoPessoa'
+      });
+       Celebracao.belongsTo(models.Pessoa, {
+        foreignKey: 'pessoa_id',
+        // as: 'CelebracaoPessoa'
+      });
     }
   }
   Celebracao.init({

@@ -5,13 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Salmo extends Model {
     static associate(models) {
-      Salmo.hasMany(models.SalmoPessoa, {
+      Salmo.hasMany(models.Celebracao, {
         foreignKey: 'salmo_id',
-        as: 'salmoPessoa'
-      });
-       Salmo.hasMany(models.CelebracaoSalmo, {
-        foreignKey: 'salmo_id',
-        as: 'salmoCelebracao'
+        as: 'celebracoes'
       });
     }
   }
